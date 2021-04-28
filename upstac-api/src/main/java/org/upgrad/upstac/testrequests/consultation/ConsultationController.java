@@ -124,15 +124,16 @@ public class ConsultationController {
 
         // Implement this method to update the result of the current test request id with test doctor comments
         // Create an object of the User class to get the logged in user
+
         // Create an object of TestResult class and make use of updateConsultation() method from testRequestUpdateService class
         //to update the current test request id with the testResult details by the current user(object created)
         // For reference check the method updateLabTest() method from LabRequestController class
 
         try {
             // replace this line of code with your implementation
-            throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED,"Not implemented");
-
-
+//            throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED,"Not implemented");
+            User doctor = userLoggedInService.getLoggedInUser();
+            return testRequestUpdateService.updateConsultation(id, testResult, doctor);
         } catch (ConstraintViolationException e) {
             throw asConstraintViolation(e);
         }catch (AppException e) {
