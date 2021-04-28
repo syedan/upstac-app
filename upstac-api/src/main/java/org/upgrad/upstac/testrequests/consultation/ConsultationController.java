@@ -15,6 +15,7 @@ import org.upgrad.upstac.testrequests.TestRequest;
 import org.upgrad.upstac.testrequests.TestRequestQueryService;
 import org.upgrad.upstac.testrequests.TestRequestUpdateService;
 import org.upgrad.upstac.testrequests.flow.TestRequestFlowService;
+import org.upgrad.upstac.users.User;
 
 import javax.validation.ConstraintViolationException;
 import java.util.List;
@@ -99,8 +100,10 @@ public class ConsultationController {
         // For reference check the method assignForLabTest() method from LabRequestController class
         try {
             // replace this line of code with your implementation
-            throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED,"Not implemented");
+//            throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED,"Not implemented");
 
+            User doctor = userLoggedInService.getLoggedInUser();
+            return   testRequestUpdateService.assignForConsultation(id,doctor);
         }catch (AppException e) {
             throw asBadRequest(e.getMessage());
         }
